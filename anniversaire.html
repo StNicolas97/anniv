@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎉 Joyeux Anniversaire Chris ! 🎂</title>
+    <title>🎉 Joyeux Anniversaire ! 🎂</title>
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -86,14 +86,15 @@
             position: fixed;
             width: 10px;
             height: 10px;
-            background: #f0f;
             position: absolute;
-            animation: confetti-fall 3s linear infinite;
+            animation: confetti-fall 3s linear forwards;
+            pointer-events: none;
         }
         
         @keyframes confetti-fall {
             to {
                 transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
             }
         }
         
@@ -120,6 +121,7 @@
         .btn-code:hover {
             transform: scale(1.05);
             box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            color: white;
         }
         
         .tech-badge {
@@ -149,208 +151,232 @@
             text-align: center;
             margin: 20px 0;
         }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
-    <div id="app">
-        <div class="birthday-container">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="card">
-                            <!-- Header -->
-                            <div class="card-header">
-                                <h1 class="display-4 mb-0">
-                                    <i class="fas fa-code"></i> 
-                                    Joyeux Anniversaire !
-                                    <i class="fas fa-birthday-cake"></i>
-                                </h1>
+    <div class="birthday-container">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <!-- Header -->
+                        <div class="card-header">
+                            <h1 class="display-4 mb-0">
+                                <i class="fas fa-code"></i> 
+                                Joyeux Anniversaire !
+                                <i class="fas fa-birthday-cake"></i>
+                            </h1>
+                        </div>
+                        
+                        <div class="card-body p-4">
+                            <!-- Terminal Style Message -->
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <div class="terminal-dot dot-red"></div>
+                                    <div class="terminal-dot dot-yellow"></div>
+                                    <div class="terminal-dot dot-green"></div>
+                                </div>
+                                <div class="code-font">
+                                    <span class="text-warning">const</span> <span class="text-info">celebrer</span> = () => {<br>
+                                    &nbsp;&nbsp;<span class="text-warning">const</span> ami = <span class="text-success" id="nomAmi">"Mon Ami"</span>;<br>
+                                    &nbsp;&nbsp;<span class="text-warning">const</span> age = <span class="text-danger" id="ageTerminal">25</span>;<br>
+                                    &nbsp;&nbsp;<span class="text-warning">const</span> message = <span class="text-success">`Joyeux ${age}e anniversaire ${ami}! 🎉`</span>;<br>
+                                    &nbsp;&nbsp;console.log(message);<br>
+                                    &nbsp;&nbsp;<span class="text-warning">return</span> <span class="text-success">"Que cette année soit remplie de code propre et de bugs résolus! 🚀"</span>;<br>
+                                    };<br><br>
+                                    celebrer();<span class="typing-cursor">_</span>
+                                </div>
                             </div>
                             
-                            <div class="card-body p-4">
-                                <!-- Terminal Style Message -->
-                                <div class="terminal">
-                                    <div class="terminal-header">
-                                        <div class="terminal-dot dot-red"></div>
-                                        <div class="terminal-dot dot-yellow"></div>
-                                        <div class="terminal-dot dot-green"></div>
-                                    </div>
-                                    <div class="code-font">
-                                        <img src="./WhatsApp Image 2026-02-11 at 14.25.00.jpeg" alt="Happy Birthday Image" class="img-fluid mb-3">
-                                        <span class="text-warning">const</span> <span class="text-info">celebrer</span> = () => {<br>
-                                        &nbsp;&nbsp;<span class="text-warning">const</span> ami = <span class="text-success">"{{ nomAmi }}"</span>;<br>
-                                        &nbsp;&nbsp;<span class="text-warning">const</span> age = <span class="text-danger">{{ age }}</span>;<br>
-                                        &nbsp;&nbsp;<span class="text-warning">const</span> message = <span class="text-success">`Joyeux ${age}e anniversaire ${ami}! 🎉`</span>;<br>
-                                        &nbsp;&nbsp;console.log(message);<br>
-                                        &nbsp;&nbsp;<span class="text-warning">return</span> <span class="text-success">"Que cette année soit remplie de code propre et de bugs résolus! 🚀"</span>;<br>
-                                        };<br><br>
-                                        celebrer();<span class="typing-cursor">_</span>
-                                    </div>
-                                </div>
+                            <!-- Cake Animation -->
+                            <div class="text-center my-4">
+                                <div class="cake">🎂</div>
+                            </div>
+                            
+                            <!-- Age Display -->
+                            <div class="age-display" id="ageDisplay">
+                                25 ANS !
+                            </div>
+                            
+                            <!-- Technologies -->
+                            <div class="text-center my-4">
+                                <h5 class="mb-3">Tes technologies préférées :</h5>
+                                <span class="tech-badge">
+                                    <i class="fab fa-js"></i> JavaScript
+                                </span>
+                                <span class="tech-badge">
+                                    <i class="fab fa-bootstrap"></i> Bootstrap
+                                </span>
+                                <span class="tech-badge">
+                                    <i class="fab fa-html5"></i> HTML5
+                                </span>
+                                <span class="tech-badge">
+                                    <i class="fab fa-css3-alt"></i> CSS3
+                                </span>
+                            </div>
+                            
+                            <!-- Code Block Message -->
+                            <div class="code-block">
+                                <strong>// Mes souhaits pour toi :</strong><br>
+                                <span class="text-primary">function</span> souhaits() {<br>
+                                &nbsp;&nbsp;<span class="text-success">// Que chaque commit soit un succès</span><br>
+                                &nbsp;&nbsp;<span class="text-success">// Que tes pull requests soient toujours approuvées</span><br>
+                                &nbsp;&nbsp;<span class="text-success">// Que tes tests passent du premier coup</span><br>
+                                &nbsp;&nbsp;<span class="text-success">// Et que ton café soit toujours chaud ☕</span><br>
+                                }
+                            </div>
+                            
+                            <!-- Interactive Section -->
+                            <div class="text-center my-4">
+                                <h5>Clique pour révéler un message spécial !</h5>
+                                <button onclick="revelerMessage()" class="btn btn-code btn-lg mt-2">
+                                    <i class="fas fa-gift"></i> Ouvrir le cadeau
+                                </button>
                                 
-                                <!-- Cake Animation -->
-                                <div class="text-center my-4">
-                                    <div class="cake">🎂</div>
+                                <div id="messageSpecial" class="alert alert-success mt-3 fade-in hidden">
+                                    <h4><i class="fas fa-heart"></i> Message spécial :</h4>
+                                    <p class="mb-0">
+                                        Tu es un développeur incroyable ! Continue de coder, d'apprendre et de créer des choses extraordinaires. 
+                                        Ton enthousiasme pour la programmation est inspirant. 
+                                        Profite de cette journée spéciale, tu le mérites ! 🎊
+                                    </p>
                                 </div>
-                                
-                                <!-- Age Display -->
-                                <div class="age-display">
-                                    {{ age }} ANS !
+                            </div>
+                            
+                            <!-- Counter -->
+                            <div class="text-center my-4">
+                                <h5>Nombre de fois où on te souhaite un bon anniversaire :</h5>
+                                <div class="age-display" style="font-size: 40px;">
+                                    <span id="compteur">1000</span>
                                 </div>
-                                
-                                <!-- Technologies -->
-                                <div class="text-center my-4">
-                                    <h5 class="mb-3">Tes technologies préférées :</h5>
-                                    <span class="tech-badge">
-                                        <i class="fab fa-js"></i> JavaScript
-                                    </span>
-                                    <span class="tech-badge">
-                                        <i class="fab fa-bootstrap"></i> Bootstrap
-                                    </span>
-                                    <span class="tech-badge">
-                                        <i class="fab fa-vuejs"></i> Vue 3
-                                    </span>
-                                </div>
-                                
-                                <!-- Code Block Message -->
-                                <div class="code-block">
-                                    <strong>// Mes souhaits pour toi :</strong><br>
-                                    <span class="text-primary">function</span> souhaits() {<br>
-                                    &nbsp;&nbsp;<span class="text-success">// Que chaque commit soit un succès</span><br>
-                                    &nbsp;&nbsp;<span class="text-success">// Que tes pull requests soient toujours approuvées</span><br>
-                                    &nbsp;&nbsp;<span class="text-success">// Que tes tests passent du premier coup</span><br>
-                                    &nbsp;&nbsp;<span class="text-success">// Et que ton café soit toujours chaud ☕</span><br>
-                                    }
-                                </div>
-                                
-                                <!-- Interactive Section -->
-                                <div class="text-center my-4">
-                                    <h5>Clique pour révéler un message spécial !</h5>
-                                    <button @click="revelerMessage" class="btn btn-code btn-lg mt-2">
-                                        <i class="fas fa-gift"></i> Ouvrir le cadeau
-                                    </button>
-                                    
-                                    <div v-if="messageVisible" class="alert alert-success mt-3 animate__animated animate__bounceIn">
-                                        <h4><i class="fas fa-heart"></i> Message spécial :</h4>
-                                        <p class="mb-0">
-                                            Tu es un développeur incroyable ! Continue de coder, d'apprendre et de créer des choses extraordinaires. 
-                                            Ton enthousiasme pour la programmation est inspirant. 
-                                            Profite de cette journée spéciale, tu le mérites ! 🎊
-                                        </p>
-                                    </div>
-                                </div>
-                                
-                                <!-- Counter -->
-                                <div class="text-center my-4">
-                                    <h5>Nombre de fois où on te souhaite un bon anniversaire :</h5>
-                                    <div class="age-display" style="font-size: 40px;">
-                                        {{ compteur }}
-                                    </div>
-                                    <button @click="incrementer" class="btn btn-code">
-                                        <i class="fas fa-plus"></i> +1 Souhait
-                                    </button>
-                                </div>
-                                
-                                <!-- Footer Quote -->
-                                <div class="alert alert-info mt-4">
-                                    <i class="fas fa-quote-left"></i>
-                                    <em>
-                                        "First, solve the problem. Then, write the code... and celebrate your birthday!"
-                                    </em>
-                                    <i class="fas fa-quote-right"></i>
-                                    <br>
-                                    <small>- John Johnson (modifié spécialement pour toi 😄)</small>
-                                </div>
+                                <button onclick="incrementerCompteur()" class="btn btn-code">
+                                    <i class="fas fa-plus"></i> +1 Souhait
+                                </button>
+                            </div>
+                            
+                            <!-- Footer Quote -->
+                            <div class="alert alert-info mt-4">
+                                <i class="fas fa-quote-left"></i>
+                                <em>
+                                    "First, solve the problem. Then, write the code... and celebrate your birthday!"
+                                </em>
+                                <i class="fas fa-quote-right"></i>
+                                <br>
+                                <small>- John Johnson (modifié spécialement pour toi 😄)</small>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <!-- Confetti -->
-        <div v-for="(confetti, index) in confettis" :key="index" 
-             :style="confetti.style"
-             class="confetti">
-        </div>
     </div>
-    
-    <!-- Vue 3 CDN -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        const { createApp } = Vue;
+        // ====== CONFIGURATION ======
+        const NOM_AMI = "Mon Ami";  // Change le nom ici
+        const AGE = 25;              // Change l'âge ici
         
-        createApp({
-            data() {
-                return {
-                    nomAmi: "Mon Ami",  // Change le nom ici
-                    age: 25,  // Change l'âge ici
-                    messageVisible: false,
-                    compteur: 1000,
-                    confettis: []
-                }
-            },
-            mounted() {
-                this.creerConfettis();
-                this.jouerMusique();
-            },
-            methods: {
-                revelerMessage() {
-                    this.messageVisible = true;
-                    this.celebrer();
-                },
-                incrementer() {
-                    this.compteur++;
-                    this.miniCelebration();
-                },
-                celebrer() {
-                    // Animation de célébration
-                    for (let i = 0; i < 50; i++) {
-                        setTimeout(() => {
-                            this.ajouterConfetti();
-                        }, i * 30);
-                    }
-                },
-                miniCelebration() {
-                    for (let i = 0; i < 10; i++) {
-                        this.ajouterConfetti();
-                    }
-                },
-                creerConfettis() {
-                    // Confettis initiaux
-                    for (let i = 0; i < 30; i++) {
-                        setTimeout(() => {
-                            this.ajouterConfetti();
-                        }, i * 100);
-                    }
-                },
-                ajouterConfetti() {
-                    const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
-                    const confetti = {
-                        style: {
-                            left: Math.random() * 100 + '%',
-                            top: '-10px',
-                            background: colors[Math.floor(Math.random() * colors.length)],
-                            animationDuration: (Math.random() * 2 + 2) + 's',
-                            animationDelay: Math.random() * 0.5 + 's'
-                        }
-                    };
-                    this.confettis.push(confetti);
-                    
-                    // Retirer après animation
-                    setTimeout(() => {
-                        this.confettis.shift();
-                    }, 5000);
-                },
-                jouerMusique() {
-                    console.log('🎵 Happy Birthday to you! 🎵');
-                }
+        // ====== VARIABLES ======
+        let compteur = 1000;
+        
+        // ====== INITIALISATION ======
+        window.addEventListener('DOMContentLoaded', function() {
+            // Mettre à jour le nom et l'âge
+            document.getElementById('nomAmi').textContent = `"${NOM_AMI}"`;
+            document.getElementById('ageTerminal').textContent = AGE;
+            document.getElementById('ageDisplay').textContent = `${AGE} ANS !`;
+            
+            // Créer les confettis initiaux
+            creerConfettisInitiaux();
+            
+            // Message dans la console
+            console.log(`🎉 Joyeux ${AGE}e anniversaire ${NOM_AMI}! 🎂`);
+            console.log('🎵 Happy Birthday to you! 🎵');
+        });
+        
+        // ====== FONCTIONS ======
+        
+        function revelerMessage() {
+            const messageDiv = document.getElementById('messageSpecial');
+            messageDiv.classList.remove('hidden');
+            celebrer();
+        }
+        
+        function incrementerCompteur() {
+            compteur++;
+            document.getElementById('compteur').textContent = compteur;
+            miniCelebration();
+        }
+        
+        function celebrer() {
+            // Créer beaucoup de confettis
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    creerConfetti();
+                }, i * 30);
             }
-        }).mount('#app');
+        }
+        
+        function miniCelebration() {
+            // Créer quelques confettis
+            for (let i = 0; i < 10; i++) {
+                creerConfetti();
+            }
+        }
+        
+        function creerConfettisInitiaux() {
+            // Confettis au chargement de la page
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    creerConfetti();
+                }, i * 100);
+            }
+        }
+        
+        function creerConfetti() {
+            const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ffa500', '#ff1493'];
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            
+            // Position et couleur aléatoires
+            confetti.style.left = Math.random() * 100 + '%';
+            confetti.style.top = '-10px';
+            confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            confetti.style.animationDelay = Math.random() * 0.5 + 's';
+            
+            document.body.appendChild(confetti);
+            
+            // Retirer après l'animation
+            setTimeout(() => {
+                confetti.remove();
+            }, 5000);
+        }
+        
+        // Confettis continus (toutes les 3 secondes)
+        setInterval(() => {
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => {
+                    creerConfetti();
+                }, i * 100);
+            }
+        }, 3000);
     </script>
 </body>
 </html>
